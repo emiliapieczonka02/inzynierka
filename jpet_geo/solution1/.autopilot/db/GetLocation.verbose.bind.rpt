@@ -1,0 +1,681 @@
+
+
+================================================================
+== Vivado HLS Report for 'GetLocation'
+================================================================
+* Date:           Wed Sep 21 08:27:49 2016
+
+* Version:        2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)
+* Project:        jpet_geo
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      2.39|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    1|    1|    2|    2|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 2
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+* FSM state operations: 
+
+ <State 1>: 2.39ns
+ST_1: tdc_channel_read [1/1] 0.00ns
+:4  %tdc_channel_read = call i16 @_ssdm_op_Read.ap_auto.i16(i16 %tdc_channel)
+
+ST_1: tmp [1/1] 0.00ns
+:6  %tmp = sext i16 %tdc_channel_read to i64
+
+ST_1: dm_detMap_x_addr [1/1] 0.00ns
+:7  %dm_detMap_x_addr = getelementptr [96 x i8]* @dm_detMap_x, i64 0, i64 %tmp
+
+ST_1: dm_detMap_x_load [2/2] 2.39ns
+:8  %dm_detMap_x_load = load i8* %dm_detMap_x_addr, align 1
+
+ST_1: dm_detMap_y_addr [1/1] 0.00ns
+:11  %dm_detMap_y_addr = getelementptr [96 x float]* @dm_detMap_y, i64 0, i64 %tmp
+
+ST_1: dm_detMap_y_load [2/2] 2.39ns
+:12  %dm_detMap_y_load = load float* %dm_detMap_y_addr, align 4
+
+ST_1: dm_detMap_module_addr [1/1] 0.00ns
+:14  %dm_detMap_module_addr = getelementptr [96 x i1]* @dm_detMap_module, i64 0, i64 %tmp
+
+ST_1: dm_detMap_module_load [2/2] 2.39ns
+:15  %dm_detMap_module_load = load i1* %dm_detMap_module_addr, align 1
+
+
+ <State 2>: 2.39ns
+ST_2: stg_11 [1/1] 0.00ns
+:0  call void (...)* @_ssdm_op_SpecBitsMap(i16* %agg_result_x), !map !7
+
+ST_2: stg_12 [1/1] 0.00ns
+:1  call void (...)* @_ssdm_op_SpecBitsMap(float* %agg_result_y), !map !11
+
+ST_2: stg_13 [1/1] 0.00ns
+:2  call void (...)* @_ssdm_op_SpecBitsMap(i16* %agg_result_module), !map !15
+
+ST_2: stg_14 [1/1] 0.00ns
+:3  call void (...)* @_ssdm_op_SpecBitsMap(i16 %tdc_channel), !map !19
+
+ST_2: stg_15 [1/1] 0.00ns
+:5  call void (...)* @_ssdm_op_SpecTopModule([12 x i8]* @GetLocation_str) nounwind
+
+ST_2: dm_detMap_x_load [1/2] 2.39ns
+:8  %dm_detMap_x_load = load i8* %dm_detMap_x_addr, align 1
+
+ST_2: dm_detMap_x_load_cast [1/1] 0.00ns
+:9  %dm_detMap_x_load_cast = zext i8 %dm_detMap_x_load to i16
+
+ST_2: stg_18 [1/1] 0.00ns
+:10  call void @_ssdm_op_Write.ap_auto.i16P(i16* %agg_result_x, i16 %dm_detMap_x_load_cast)
+
+ST_2: dm_detMap_y_load [1/2] 2.39ns
+:12  %dm_detMap_y_load = load float* %dm_detMap_y_addr, align 4
+
+ST_2: stg_20 [1/1] 0.00ns
+:13  call void @_ssdm_op_Write.ap_auto.floatP(float* %agg_result_y, float %dm_detMap_y_load)
+
+ST_2: dm_detMap_module_load [1/2] 2.39ns
+:15  %dm_detMap_module_load = load i1* %dm_detMap_module_addr, align 1
+
+ST_2: dm_detMap_module_load_cast [1/1] 0.00ns
+:16  %dm_detMap_module_load_cast = zext i1 %dm_detMap_module_load to i16
+
+ST_2: stg_23 [1/1] 0.00ns
+:17  call void @_ssdm_op_Write.ap_auto.i16P(i16* %agg_result_module, i16 %dm_detMap_module_load_cast)
+
+ST_2: stg_24 [1/1] 0.00ns
+:18  ret void
+
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+STG Binding: 
+---------------- STG Properties BEGIN ----------------
+- Is combinational: 0
+- Is one-state seq: 0
+- Is datapath-only: 0
+- Is clock enabled: 0
+- Is pipelined: 0
+- Is top level: 1
+Port [ Return ] is wired: 1; IO mode=ap_ctrl_hs:ce=0
+Port [ agg_result_x]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=0; pingpong=0; private_global=0; IO mode=ap_vld:ce=0
+Port [ agg_result_y]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=0; pingpong=0; private_global=0; IO mode=ap_vld:ce=0
+Port [ agg_result_module]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=1; type=0; pingpong=0; private_global=0; IO mode=ap_vld:ce=0
+Port [ tdc_channel]:  wired=1; compound=0; hidden=0; nouse=0; global=0; static=0; extern=0; dir=0; type=0; pingpong=0; private_global=0; IO mode=ap_none:ce=0
+Port [ dm_detMap_x]:  wired=0; compound=1; hidden=1; nouse=0; global=1; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=1; linkage=0; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ dm_detMap_y]:  wired=0; compound=1; hidden=1; nouse=0; global=1; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=1; linkage=0; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+Port [ dm_detMap_module]:  wired=0; compound=1; hidden=1; nouse=0; global=1; static=0; extern=0; dir=0; type=1; pingpong=0; private_global=1; linkage=0; visibility=0; MemPort=[1]; IO mode=ap_memory:ce=0
+---------------- STG Properties END ------------------
+
+---------------- Datapath Model BEGIN ----------------
+
+<LifeTime>
+<method=bitvector/>
+tdc_channel_read           (read         ) [ 000]
+tmp                        (sext         ) [ 000]
+dm_detMap_x_addr           (getelementptr) [ 001]
+dm_detMap_y_addr           (getelementptr) [ 001]
+dm_detMap_module_addr      (getelementptr) [ 001]
+stg_11                     (specbitsmap  ) [ 000]
+stg_12                     (specbitsmap  ) [ 000]
+stg_13                     (specbitsmap  ) [ 000]
+stg_14                     (specbitsmap  ) [ 000]
+stg_15                     (spectopmodule) [ 000]
+dm_detMap_x_load           (load         ) [ 000]
+dm_detMap_x_load_cast      (zext         ) [ 000]
+stg_18                     (write        ) [ 000]
+dm_detMap_y_load           (load         ) [ 000]
+stg_20                     (write        ) [ 000]
+dm_detMap_module_load      (load         ) [ 000]
+dm_detMap_module_load_cast (zext         ) [ 000]
+stg_23                     (write        ) [ 000]
+stg_24                     (ret          ) [ 000]
+</LifeTime>
+
+<model>
+
+<comp_list>
+<comp id="0" class="1000" name="agg_result_x">
+<pin_list>
+<pin id="1" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="agg_result_x"/></StgValue>
+</bind>
+</comp>
+
+<comp id="2" class="1000" name="agg_result_y">
+<pin_list>
+<pin id="3" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="agg_result_y"/></StgValue>
+</bind>
+</comp>
+
+<comp id="4" class="1000" name="agg_result_module">
+<pin_list>
+<pin id="5" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="agg_result_module"/></StgValue>
+</bind>
+</comp>
+
+<comp id="6" class="1000" name="tdc_channel">
+<pin_list>
+<pin id="7" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="tdc_channel"/></StgValue>
+</bind>
+</comp>
+
+<comp id="8" class="1000" name="dm_detMap_x">
+<pin_list>
+<pin id="9" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="dm_detMap_x"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="10" class="1000" name="dm_detMap_y">
+<pin_list>
+<pin id="11" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="dm_detMap_y"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="12" class="1000" name="dm_detMap_module">
+<pin_list>
+<pin id="13" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="dm_detMap_module"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</bind>
+</comp>
+
+<comp id="14" class="1001" name="const_14">
+<pin_list>
+<pin id="15" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Read.ap_auto.i16"/></StgValue>
+</bind>
+</comp>
+
+<comp id="16" class="1001" name="const_16">
+<pin_list>
+<pin id="17" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name=""/></StgValue>
+</bind>
+</comp>
+
+<comp id="18" class="1001" name="const_18">
+<pin_list>
+<pin id="19" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecBitsMap"/></StgValue>
+</bind>
+</comp>
+
+<comp id="20" class="1001" name="const_20">
+<pin_list>
+<pin id="21" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_SpecTopModule"/></StgValue>
+</bind>
+</comp>
+
+<comp id="22" class="1001" name="const_22">
+<pin_list>
+<pin id="23" dir="1" index="0" bw="1" slack="2147483647"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="GetLocation_str"/></StgValue>
+</bind>
+</comp>
+
+<comp id="24" class="1001" name="const_24">
+<pin_list>
+<pin id="25" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Write.ap_auto.i16P"/></StgValue>
+</bind>
+</comp>
+
+<comp id="26" class="1001" name="const_26">
+<pin_list>
+<pin id="27" dir="1" index="0" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<StgValue><ssdm name="_ssdm_op_Write.ap_auto.floatP"/></StgValue>
+</bind>
+</comp>
+
+<comp id="28" class="1004" name="tdc_channel_read_read_fu_28">
+<pin_list>
+<pin id="29" dir="0" index="0" bw="16" slack="0"/>
+<pin id="30" dir="0" index="1" bw="16" slack="0"/>
+<pin id="31" dir="1" index="2" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opcode="read(1150) " fcode="read"/>
+<opset="tdc_channel_read/1 "/>
+</bind>
+</comp>
+
+<comp id="34" class="1004" name="stg_18_write_fu_34">
+<pin_list>
+<pin id="35" dir="0" index="0" bw="0" slack="0"/>
+<pin id="36" dir="0" index="1" bw="16" slack="0"/>
+<pin id="37" dir="0" index="2" bw="8" slack="0"/>
+<pin id="38" dir="1" index="3" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="write(1151) " fcode="write"/>
+<opset="stg_18/2 "/>
+</bind>
+</comp>
+
+<comp id="41" class="1004" name="stg_20_write_fu_41">
+<pin_list>
+<pin id="42" dir="0" index="0" bw="0" slack="0"/>
+<pin id="43" dir="0" index="1" bw="32" slack="0"/>
+<pin id="44" dir="0" index="2" bw="32" slack="0"/>
+<pin id="45" dir="1" index="3" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="write(1151) " fcode="write"/>
+<opset="stg_20/2 "/>
+</bind>
+</comp>
+
+<comp id="48" class="1004" name="stg_23_write_fu_48">
+<pin_list>
+<pin id="49" dir="0" index="0" bw="0" slack="0"/>
+<pin id="50" dir="0" index="1" bw="16" slack="0"/>
+<pin id="51" dir="0" index="2" bw="1" slack="0"/>
+<pin id="52" dir="1" index="3" bw="0" slack="2147483647"/>
+</pin_list>
+<bind>
+<opcode="write(1151) " fcode="write"/>
+<opset="stg_23/2 "/>
+</bind>
+</comp>
+
+<comp id="55" class="1004" name="dm_detMap_x_addr_gep_fu_55">
+<pin_list>
+<pin id="56" dir="0" index="0" bw="8" slack="0"/>
+<pin id="57" dir="0" index="1" bw="1" slack="0"/>
+<pin id="58" dir="0" index="2" bw="16" slack="0"/>
+<pin id="59" dir="1" index="3" bw="7" slack="0"/>
+</pin_list>
+<bind>
+<opcode="getelementptr(29) " fcode="getelementptr"/>
+<opset="dm_detMap_x_addr/1 "/>
+</bind>
+</comp>
+
+<comp id="62" class="1004" name="grp_access_fu_62">
+<pin_list>
+<pin id="63" dir="0" index="0" bw="7" slack="0"/>
+<pin id="64" dir="0" index="1" bw="8" slack="2147483647"/>
+<pin id="65" dir="1" index="2" bw="8" slack="0"/>
+</pin_list>
+<bind>
+<opcode="load(27) " fcode="load"/>
+<opset="dm_detMap_x_load/1 "/>
+</bind>
+</comp>
+
+<comp id="67" class="1004" name="dm_detMap_y_addr_gep_fu_67">
+<pin_list>
+<pin id="68" dir="0" index="0" bw="32" slack="0"/>
+<pin id="69" dir="0" index="1" bw="1" slack="0"/>
+<pin id="70" dir="0" index="2" bw="16" slack="0"/>
+<pin id="71" dir="1" index="3" bw="7" slack="0"/>
+</pin_list>
+<bind>
+<opcode="getelementptr(29) " fcode="getelementptr"/>
+<opset="dm_detMap_y_addr/1 "/>
+</bind>
+</comp>
+
+<comp id="74" class="1004" name="grp_access_fu_74">
+<pin_list>
+<pin id="75" dir="0" index="0" bw="7" slack="0"/>
+<pin id="76" dir="0" index="1" bw="32" slack="2147483647"/>
+<pin id="77" dir="1" index="2" bw="32" slack="0"/>
+</pin_list>
+<bind>
+<opcode="load(27) " fcode="load"/>
+<opset="dm_detMap_y_load/1 "/>
+</bind>
+</comp>
+
+<comp id="80" class="1004" name="dm_detMap_module_addr_gep_fu_80">
+<pin_list>
+<pin id="81" dir="0" index="0" bw="1" slack="0"/>
+<pin id="82" dir="0" index="1" bw="1" slack="0"/>
+<pin id="83" dir="0" index="2" bw="16" slack="0"/>
+<pin id="84" dir="1" index="3" bw="7" slack="0"/>
+</pin_list>
+<bind>
+<opcode="getelementptr(29) " fcode="getelementptr"/>
+<opset="dm_detMap_module_addr/1 "/>
+</bind>
+</comp>
+
+<comp id="87" class="1004" name="grp_access_fu_87">
+<pin_list>
+<pin id="88" dir="0" index="0" bw="7" slack="0"/>
+<pin id="89" dir="0" index="1" bw="1" slack="2147483647"/>
+<pin id="90" dir="1" index="2" bw="1" slack="0"/>
+</pin_list>
+<bind>
+<opcode="load(27) " fcode="load"/>
+<opset="dm_detMap_module_load/1 "/>
+</bind>
+</comp>
+
+<comp id="92" class="1004" name="tmp_fu_92">
+<pin_list>
+<pin id="93" dir="0" index="0" bw="16" slack="0"/>
+<pin id="94" dir="1" index="1" bw="64" slack="0"/>
+</pin_list>
+<bind>
+<opcode="sext(35) " fcode="sext"/>
+<opset="tmp/1 "/>
+</bind>
+</comp>
+
+<comp id="99" class="1004" name="dm_detMap_x_load_cast_fu_99">
+<pin_list>
+<pin id="100" dir="0" index="0" bw="8" slack="0"/>
+<pin id="101" dir="1" index="1" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opcode="zext(34) " fcode="zext"/>
+<opset="dm_detMap_x_load_cast/2 "/>
+</bind>
+</comp>
+
+<comp id="104" class="1004" name="dm_detMap_module_load_cast_fu_104">
+<pin_list>
+<pin id="105" dir="0" index="0" bw="1" slack="0"/>
+<pin id="106" dir="1" index="1" bw="16" slack="0"/>
+</pin_list>
+<bind>
+<opcode="zext(34) " fcode="zext"/>
+<opset="dm_detMap_module_load_cast/2 "/>
+</bind>
+</comp>
+
+<comp id="109" class="1005" name="dm_detMap_x_addr_reg_109">
+<pin_list>
+<pin id="110" dir="0" index="0" bw="7" slack="1"/>
+<pin id="111" dir="1" index="1" bw="7" slack="1"/>
+</pin_list>
+<bind>
+<opset="dm_detMap_x_addr "/>
+</bind>
+</comp>
+
+<comp id="114" class="1005" name="dm_detMap_y_addr_reg_114">
+<pin_list>
+<pin id="115" dir="0" index="0" bw="7" slack="1"/>
+<pin id="116" dir="1" index="1" bw="7" slack="1"/>
+</pin_list>
+<bind>
+<opset="dm_detMap_y_addr "/>
+</bind>
+</comp>
+
+<comp id="119" class="1005" name="dm_detMap_module_addr_reg_119">
+<pin_list>
+<pin id="120" dir="0" index="0" bw="7" slack="1"/>
+<pin id="121" dir="1" index="1" bw="7" slack="1"/>
+</pin_list>
+<bind>
+<opset="dm_detMap_module_addr "/>
+</bind>
+</comp>
+
+</comp_list>
+
+<net_list>
+<net id="32"><net_src comp="14" pin="0"/><net_sink comp="28" pin=0"/></net>
+
+<net id="33"><net_src comp="6" pin="0"/><net_sink comp="28" pin=1"/></net>
+
+<net id="39"><net_src comp="24" pin="0"/><net_sink comp="34" pin=0"/></net>
+
+<net id="40"><net_src comp="0" pin="0"/><net_sink comp="34" pin=1"/></net>
+
+<net id="46"><net_src comp="26" pin="0"/><net_sink comp="41" pin=0"/></net>
+
+<net id="47"><net_src comp="2" pin="0"/><net_sink comp="41" pin=1"/></net>
+
+<net id="53"><net_src comp="24" pin="0"/><net_sink comp="48" pin=0"/></net>
+
+<net id="54"><net_src comp="4" pin="0"/><net_sink comp="48" pin=1"/></net>
+
+<net id="60"><net_src comp="8" pin="0"/><net_sink comp="55" pin=0"/></net>
+
+<net id="61"><net_src comp="16" pin="0"/><net_sink comp="55" pin=1"/></net>
+
+<net id="66"><net_src comp="55" pin="3"/><net_sink comp="62" pin=0"/></net>
+
+<net id="72"><net_src comp="10" pin="0"/><net_sink comp="67" pin=0"/></net>
+
+<net id="73"><net_src comp="16" pin="0"/><net_sink comp="67" pin=1"/></net>
+
+<net id="78"><net_src comp="74" pin="2"/><net_sink comp="41" pin=2"/></net>
+
+<net id="79"><net_src comp="67" pin="3"/><net_sink comp="74" pin=0"/></net>
+
+<net id="85"><net_src comp="12" pin="0"/><net_sink comp="80" pin=0"/></net>
+
+<net id="86"><net_src comp="16" pin="0"/><net_sink comp="80" pin=1"/></net>
+
+<net id="91"><net_src comp="80" pin="3"/><net_sink comp="87" pin=0"/></net>
+
+<net id="95"><net_src comp="28" pin="2"/><net_sink comp="92" pin=0"/></net>
+
+<net id="96"><net_src comp="92" pin="1"/><net_sink comp="55" pin=2"/></net>
+
+<net id="97"><net_src comp="92" pin="1"/><net_sink comp="67" pin=2"/></net>
+
+<net id="98"><net_src comp="92" pin="1"/><net_sink comp="80" pin=2"/></net>
+
+<net id="102"><net_src comp="62" pin="2"/><net_sink comp="99" pin=0"/></net>
+
+<net id="103"><net_src comp="99" pin="1"/><net_sink comp="34" pin=2"/></net>
+
+<net id="107"><net_src comp="87" pin="2"/><net_sink comp="104" pin=0"/></net>
+
+<net id="108"><net_src comp="104" pin="1"/><net_sink comp="48" pin=2"/></net>
+
+<net id="112"><net_src comp="55" pin="3"/><net_sink comp="109" pin=0"/></net>
+
+<net id="113"><net_src comp="109" pin="1"/><net_sink comp="62" pin=0"/></net>
+
+<net id="117"><net_src comp="67" pin="3"/><net_sink comp="114" pin=0"/></net>
+
+<net id="118"><net_src comp="114" pin="1"/><net_sink comp="74" pin=0"/></net>
+
+<net id="122"><net_src comp="80" pin="3"/><net_sink comp="119" pin=0"/></net>
+
+<net id="123"><net_src comp="119" pin="1"/><net_sink comp="87" pin=0"/></net>
+
+</net_list>
+
+</model> 
+---------------- Datapath Model END ------------------
+
+* FSMD analyzer results:
+  - Output states:
+	Port: agg_result_x | {2 }
+	Port: agg_result_y | {2 }
+	Port: agg_result_module | {2 }
+ - Input state : 
+	Port: GetLocation : tdc_channel | {1 }
+	Port: GetLocation : dm_detMap_x | {1 2 }
+	Port: GetLocation : dm_detMap_y | {1 2 }
+	Port: GetLocation : dm_detMap_module | {1 2 }
+  - Chain level:
+	State 1
+		dm_detMap_x_addr : 1
+		dm_detMap_x_load : 2
+		dm_detMap_y_addr : 1
+		dm_detMap_y_load : 2
+		dm_detMap_module_addr : 1
+		dm_detMap_module_load : 2
+	State 2
+		dm_detMap_x_load_cast : 1
+		stg_18 : 2
+		stg_20 : 1
+		dm_detMap_module_load_cast : 1
+		stg_23 : 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+
+* Functional unit list:
+|----------|-----------------------------------|
+| Operation|          Functional Unit          |
+|----------|-----------------------------------|
+|   read   |    tdc_channel_read_read_fu_28    |
+|----------|-----------------------------------|
+|          |         stg_18_write_fu_34        |
+|   write  |         stg_20_write_fu_41        |
+|          |         stg_23_write_fu_48        |
+|----------|-----------------------------------|
+|   sext   |             tmp_fu_92             |
+|----------|-----------------------------------|
+|   zext   |    dm_detMap_x_load_cast_fu_99    |
+|          | dm_detMap_module_load_cast_fu_104 |
+|----------|-----------------------------------|
+|   Total  |                                   |
+|----------|-----------------------------------|
+
+Memories:
++----------------+--------+--------+--------+
+|                |  BRAM  |   FF   |   LUT  |
++----------------+--------+--------+--------+
+|dm_detMap_module|    0   |    1   |    2   |
+|   dm_detMap_x  |    0   |    8   |   12   |
+|   dm_detMap_y  |    1   |    0   |    0   |
++----------------+--------+--------+--------+
+|      Total     |    1   |    9   |   14   |
++----------------+--------+--------+--------+
+
+* Register list:
++-----------------------------+--------+
+|                             |   FF   |
++-----------------------------+--------+
+|dm_detMap_module_addr_reg_119|    7   |
+|   dm_detMap_x_addr_reg_109  |    7   |
+|   dm_detMap_y_addr_reg_114  |    7   |
++-----------------------------+--------+
+|            Total            |   21   |
++-----------------------------+--------+
+
+* Multiplexer (MUX) list: 
+|------------------|------|------|------|--------||---------||---------|
+|       Comp       |  Pin | Size |  BW  | S x BW ||  Delay  ||   LUT   |
+|------------------|------|------|------|--------||---------||---------|
+| grp_access_fu_62 |  p0  |   2  |   7  |   14   ||    7    |
+| grp_access_fu_74 |  p0  |   2  |   7  |   14   ||    7    |
+| grp_access_fu_87 |  p0  |   2  |   7  |   14   ||    7    |
+|------------------|------|------|------|--------||---------||---------|
+|       Total      |      |      |      |   42   ||  4.713  ||    21   |
+|------------------|------|------|------|--------||---------||---------|
+
+
+
+* Summary:
++-----------+--------+--------+--------+--------+
+|           |  BRAM  |  Delay |   FF   |   LUT  |
++-----------+--------+--------+--------+--------+
+|  Function |    -   |    -   |    -   |    -   |
+|   Memory  |    1   |    -   |    9   |   14   |
+|Multiplexer|    -   |    4   |    -   |   21   |
+|  Register |    -   |    -   |   21   |    -   |
++-----------+--------+--------+--------+--------+
+|   Total   |    1   |    4   |   30   |   35   |
++-----------+--------+--------+--------+--------+

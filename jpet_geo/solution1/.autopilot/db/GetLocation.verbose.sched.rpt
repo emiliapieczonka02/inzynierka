@@ -1,0 +1,172 @@
+
+
+================================================================
+== Vivado HLS Report for 'GetLocation'
+================================================================
+* Date:           Wed Sep 21 08:27:49 2016
+
+* Version:        2016.2 (Build 1577090 on Thu Jun 02 16:59:10 MDT 2016)
+* Project:        jpet_geo
+* Solution:       solution1
+* Product family: zynq
+* Target device:  xc7z020clg484-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing (ns): 
+    * Summary: 
+    +--------+-------+----------+------------+
+    |  Clock | Target| Estimated| Uncertainty|
+    +--------+-------+----------+------------+
+    |ap_clk  |  10.00|      2.39|        1.25|
+    +--------+-------+----------+------------+
+
++ Latency (clock cycles): 
+    * Summary: 
+    +-----+-----+-----+-----+---------+
+    |  Latency  |  Interval | Pipeline|
+    | min | max | min | max |   Type  |
+    +-----+-----+-----+-----+---------+
+    |    1|    1|    2|    2|   none  |
+    +-----+-----+-----+-----+---------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        N/A
+
+============================================================
++ Verbose Summary: Synthesis Manager
+============================================================
+InlineROM: 1
+ExposeGlobal: 0
+============================================================
++ Verbose Summary: CDFG Model
+============================================================
+IsTopModel: 1
+ResetActiveHigh: 1
+IsCombinational: 0
+IsDatapathOnly: 0
+HasWiredReturn: 1
+HasMFsm: 0
+HasVarLatency: 1
+IsPipeline: 0
+IsRtlPipelined: 0
+IsInstanceOverlapped: 0
+IsDontTouch: 0
+HasImplIP: 0
+IsGatedGlobalClock: 0
+
+
+============================================================
++ Verbose Summary: Schedule
+============================================================
+* Number of FSM states: 2
+* Pipeline: 0
+* Dataflow Pipeline: 0
+
+* FSM state transitions: 
+1 --> 
+	2  / true
+2 --> 
+* FSM state operations: 
+
+ <State 1>: 2.39ns
+ST_1: tdc_channel_read [1/1] 0.00ns
+:4  %tdc_channel_read = call i16 @_ssdm_op_Read.ap_auto.i16(i16 %tdc_channel)
+
+ST_1: tmp [1/1] 0.00ns
+:6  %tmp = sext i16 %tdc_channel_read to i64
+
+ST_1: dm_detMap_x_addr [1/1] 0.00ns
+:7  %dm_detMap_x_addr = getelementptr [96 x i8]* @dm_detMap_x, i64 0, i64 %tmp
+
+ST_1: dm_detMap_x_load [2/2] 2.39ns
+:8  %dm_detMap_x_load = load i8* %dm_detMap_x_addr, align 1
+
+ST_1: dm_detMap_y_addr [1/1] 0.00ns
+:11  %dm_detMap_y_addr = getelementptr [96 x float]* @dm_detMap_y, i64 0, i64 %tmp
+
+ST_1: dm_detMap_y_load [2/2] 2.39ns
+:12  %dm_detMap_y_load = load float* %dm_detMap_y_addr, align 4
+
+ST_1: dm_detMap_module_addr [1/1] 0.00ns
+:14  %dm_detMap_module_addr = getelementptr [96 x i1]* @dm_detMap_module, i64 0, i64 %tmp
+
+ST_1: dm_detMap_module_load [2/2] 2.39ns
+:15  %dm_detMap_module_load = load i1* %dm_detMap_module_addr, align 1
+
+
+ <State 2>: 2.39ns
+ST_2: stg_11 [1/1] 0.00ns
+:0  call void (...)* @_ssdm_op_SpecBitsMap(i16* %agg_result_x), !map !7
+
+ST_2: stg_12 [1/1] 0.00ns
+:1  call void (...)* @_ssdm_op_SpecBitsMap(float* %agg_result_y), !map !11
+
+ST_2: stg_13 [1/1] 0.00ns
+:2  call void (...)* @_ssdm_op_SpecBitsMap(i16* %agg_result_module), !map !15
+
+ST_2: stg_14 [1/1] 0.00ns
+:3  call void (...)* @_ssdm_op_SpecBitsMap(i16 %tdc_channel), !map !19
+
+ST_2: stg_15 [1/1] 0.00ns
+:5  call void (...)* @_ssdm_op_SpecTopModule([12 x i8]* @GetLocation_str) nounwind
+
+ST_2: dm_detMap_x_load [1/2] 2.39ns
+:8  %dm_detMap_x_load = load i8* %dm_detMap_x_addr, align 1
+
+ST_2: dm_detMap_x_load_cast [1/1] 0.00ns
+:9  %dm_detMap_x_load_cast = zext i8 %dm_detMap_x_load to i16
+
+ST_2: stg_18 [1/1] 0.00ns
+:10  call void @_ssdm_op_Write.ap_auto.i16P(i16* %agg_result_x, i16 %dm_detMap_x_load_cast)
+
+ST_2: dm_detMap_y_load [1/2] 2.39ns
+:12  %dm_detMap_y_load = load float* %dm_detMap_y_addr, align 4
+
+ST_2: stg_20 [1/1] 0.00ns
+:13  call void @_ssdm_op_Write.ap_auto.floatP(float* %agg_result_y, float %dm_detMap_y_load)
+
+ST_2: dm_detMap_module_load [1/2] 2.39ns
+:15  %dm_detMap_module_load = load i1* %dm_detMap_module_addr, align 1
+
+ST_2: dm_detMap_module_load_cast [1/1] 0.00ns
+:16  %dm_detMap_module_load_cast = zext i1 %dm_detMap_module_load to i16
+
+ST_2: stg_23 [1/1] 0.00ns
+:17  call void @_ssdm_op_Write.ap_auto.i16P(i16* %agg_result_module, i16 %dm_detMap_module_load_cast)
+
+ST_2: stg_24 [1/1] 0.00ns
+:18  ret void
+
+
+
+============================================================
++ Verbose Summary: Timing violations
+============================================================
+Target clock period: 10ns, clock uncertainty: 1.25ns.
+
+ No timing violations. 
+
+
+============================================================
++ Verbose Summary: Binding
+============================================================
+N/A
+* FSMD analyzer results:
+  - Output states:
+ - Input state : 
+  - Chain level:
+	State 1
+	State 2
+
+
+============================================================
++ Verbose Summary: Datapath Resource usage 
+============================================================
+N/A

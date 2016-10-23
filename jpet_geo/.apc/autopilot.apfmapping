@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<autopilotfilemapping:AutoPilotFileMapping xmlns:autopilotfilemapping="www.autoesl.com/autopilotfilemapping">
+  <source>
+    <originFiles name="jpet_geo.cpp" path="C:\Users\Emilia\Desktop\majne\inz\inzynierskie\jpet_geo\jpet_geo.cpp"/>
+    <originFiles name="jpet_geo.h" path="C:\Users\Emilia\Desktop\majne\inz\inzynierskie\jpet_geo\jpet_geo.h"/>
+  </source>
+  <testbench>
+    <originFiles name="jpet_geo_tb.cpp" path="C:\Users\Emilia\Desktop\majne\inz\inzynierskie\jpet_geo\jpet_geo_tb.cpp"/>
+  </testbench>
+</autopilotfilemapping:AutoPilotFileMapping>

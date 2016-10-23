@@ -1,0 +1,7 @@
+vhdl xil_defaultlib "AESL_sim_pkg.vhd"
+vhdl xil_defaultlib "GetLocation.autotb.vhd"
+vhdl xil_defaultlib "GetLocation.vhd"
+vhdl xil_defaultlib "GetLocation_dm_detMap_module.vhd"
+vhdl xil_defaultlib "GetLocation_dm_detMap_x.vhd"
+vhdl xil_defaultlib "GetLocation_dm_detMap_y.vhd"
+

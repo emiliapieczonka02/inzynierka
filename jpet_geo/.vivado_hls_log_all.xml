@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vivadoHLSLog:LogRoot xmlns:vivadoHLSLog="www.xilinx.com/vivadoHLSLog">
+  <errorLogs>
+    <logs>
+      <synLog/>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </errorLogs>
+  <warningLogs>
+    <logs>
+      <synLog>
+        <logs message="WARNING: [RTGEN 206-101] Global array 'dm_detMap_module' will not be exposed as RTL port." projectName="jpet_geo" solutionName="solution1" date="2016-09-21T08:27:49.367+0200" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Global array 'dm_detMap_y' will not be exposed as RTL port." projectName="jpet_geo" solutionName="solution1" date="2016-09-21T08:27:49.258+0200" type="Warning"/>
+        <logs message="WARNING: [RTGEN 206-101] Global array 'dm_detMap_x' will not be exposed as RTL port." projectName="jpet_geo" solutionName="solution1" date="2016-09-21T08:27:49.227+0200" type="Warning"/>
+        <logs message="WARNING: [SYNCHK 200-62] Warning: out of bound array access detected" projectName="jpet_geo" solutionName="solution1" date="2016-09-21T08:27:47.947+0200" type="Warning"/>
+        <logs message="WARNING: [SYNCHK 200-62] Warning: out of bound array access detected" projectName="jpet_geo" solutionName="solution1" date="2016-09-21T08:27:47.635+0200" type="Warning"/>
+        <logs message="WARNING: [SYNCHK 200-62] Warning: out of bound array access detected" projectName="jpet_geo" solutionName="solution1" date="2016-09-21T08:27:47.635+0200" type="Warning"/>
+      </synLog>
+      <simLog/>
+      <mgLog/>
+      <packageLog/>
+      <csimLog/>
+    </logs>
+  </warningLogs>
+</vivadoHLSLog:LogRoot>

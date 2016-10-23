@@ -1,0 +1,5 @@
+   Build using "C:/Xilinx/Vivado_HLS/2016.2/msys/bin/g++.exe"
+   Compiling apatb_GetLocation.cpp
+   Compiling jpet_geo.cpp_pre.cpp.tb.cpp
+   Compiling jpet_geo_tb.cpp_pre.cpp.tb.cpp
+   Generating cosim.tv.exe

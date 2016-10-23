@@ -1,0 +1,465 @@
+<stg><name>GetLocation</name>
+
+
+<trans_list>
+
+<trans id="25" from="1" to="2">
+<condition id="2">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+</trans>
+</trans_list>
+
+
+
+<state_list>
+
+<state id="1" st_id="1">
+
+<operation id="3" st_id="1" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="0">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="12" bw="16" op_0_bw="16" op_1_bw="16">
+<![CDATA[
+:4  %tdc_channel_read = call i16 @_ssdm_op_Read.ap_auto.i16(i16 %tdc_channel)
+
+]]></node>
+<StgValue><ssdm name="tdc_channel_read"/></StgValue>
+</operation>
+
+<operation id="4" st_id="1" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="0">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="14" bw="64" op_0_bw="16">
+<![CDATA[
+:6  %tmp = sext i16 %tdc_channel_read to i64
+
+]]></node>
+<StgValue><ssdm name="tmp"/></StgValue>
+</operation>
+
+<operation id="5" st_id="1" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="0">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="15" bw="7" op_0_bw="8" op_1_bw="64" op_2_bw="64">
+<![CDATA[
+:7  %dm_detMap_x_addr = getelementptr [96 x i8]* @dm_detMap_x, i64 0, i64 %tmp
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_x_addr"/></StgValue>
+</operation>
+
+<operation id="6" st_id="1" stage="2" lat="2">
+<core>ROM_nP</core>
+<MemPortIdVec>0 </MemPortIdVec>
+<condition id="0">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="16" bw="8" op_0_bw="7">
+<![CDATA[
+:8  %dm_detMap_x_load = load i8* %dm_detMap_x_addr, align 1
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_x_load"/></StgValue>
+</operation>
+
+<operation id="7" st_id="1" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="0">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="19" bw="7" op_0_bw="32" op_1_bw="64" op_2_bw="64">
+<![CDATA[
+:11  %dm_detMap_y_addr = getelementptr [96 x float]* @dm_detMap_y, i64 0, i64 %tmp
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_y_addr"/></StgValue>
+</operation>
+
+<operation id="8" st_id="1" stage="2" lat="2">
+<core>ROM_nP</core>
+<MemPortIdVec>0 </MemPortIdVec>
+<condition id="0">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="20" bw="32" op_0_bw="7">
+<![CDATA[
+:12  %dm_detMap_y_load = load float* %dm_detMap_y_addr, align 4
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_y_load"/></StgValue>
+</operation>
+
+<operation id="9" st_id="1" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="0">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="22" bw="7" op_0_bw="1" op_1_bw="64" op_2_bw="64">
+<![CDATA[
+:14  %dm_detMap_module_addr = getelementptr [96 x i1]* @dm_detMap_module, i64 0, i64 %tmp
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_module_addr"/></StgValue>
+</operation>
+
+<operation id="10" st_id="1" stage="2" lat="2">
+<core>ROM_nP</core>
+<MemPortIdVec>0 </MemPortIdVec>
+<condition id="0">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="23" bw="1" op_0_bw="7">
+<![CDATA[
+:15  %dm_detMap_module_load = load i1* %dm_detMap_module_addr, align 1
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_module_load"/></StgValue>
+</operation>
+</state>
+
+<state id="2" st_id="2">
+
+<operation id="11" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="8" bw="0" op_0_bw="0" op_1_bw="16">
+<![CDATA[
+:0  call void (...)* @_ssdm_op_SpecBitsMap(i16* %agg_result_x), !map !7
+
+]]></node>
+<StgValue><ssdm name=""/></StgValue>
+</operation>
+
+<operation id="12" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="9" bw="0" op_0_bw="0" op_1_bw="32">
+<![CDATA[
+:1  call void (...)* @_ssdm_op_SpecBitsMap(float* %agg_result_y), !map !11
+
+]]></node>
+<StgValue><ssdm name=""/></StgValue>
+</operation>
+
+<operation id="13" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="10" bw="0" op_0_bw="0" op_1_bw="16">
+<![CDATA[
+:2  call void (...)* @_ssdm_op_SpecBitsMap(i16* %agg_result_module), !map !15
+
+]]></node>
+<StgValue><ssdm name=""/></StgValue>
+</operation>
+
+<operation id="14" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="11" bw="0" op_0_bw="0" op_1_bw="16">
+<![CDATA[
+:3  call void (...)* @_ssdm_op_SpecBitsMap(i16 %tdc_channel), !map !19
+
+]]></node>
+<StgValue><ssdm name=""/></StgValue>
+</operation>
+
+<operation id="15" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="13" bw="0" op_0_bw="0" op_1_bw="0">
+<![CDATA[
+:5  call void (...)* @_ssdm_op_SpecTopModule([12 x i8]* @GetLocation_str) nounwind
+
+]]></node>
+<StgValue><ssdm name=""/></StgValue>
+</operation>
+
+<operation id="16" st_id="2" stage="1" lat="2">
+<core>ROM_nP</core>
+<MemPortIdVec>0 </MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="16" bw="8" op_0_bw="7">
+<![CDATA[
+:8  %dm_detMap_x_load = load i8* %dm_detMap_x_addr, align 1
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_x_load"/></StgValue>
+</operation>
+
+<operation id="17" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="17" bw="16" op_0_bw="8">
+<![CDATA[
+:9  %dm_detMap_x_load_cast = zext i8 %dm_detMap_x_load to i16
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_x_load_cast"/></StgValue>
+</operation>
+
+<operation id="18" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="18" bw="0" op_0_bw="0" op_1_bw="16" op_2_bw="16">
+<![CDATA[
+:10  call void @_ssdm_op_Write.ap_auto.i16P(i16* %agg_result_x, i16 %dm_detMap_x_load_cast)
+
+]]></node>
+<StgValue><ssdm name=""/></StgValue>
+</operation>
+
+<operation id="19" st_id="2" stage="1" lat="2">
+<core>ROM_nP</core>
+<MemPortIdVec>0 </MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="20" bw="32" op_0_bw="7">
+<![CDATA[
+:12  %dm_detMap_y_load = load float* %dm_detMap_y_addr, align 4
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_y_load"/></StgValue>
+</operation>
+
+<operation id="20" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="21" bw="0" op_0_bw="0" op_1_bw="32" op_2_bw="32">
+<![CDATA[
+:13  call void @_ssdm_op_Write.ap_auto.floatP(float* %agg_result_y, float %dm_detMap_y_load)
+
+]]></node>
+<StgValue><ssdm name=""/></StgValue>
+</operation>
+
+<operation id="21" st_id="2" stage="1" lat="2">
+<core>ROM_nP</core>
+<MemPortIdVec>0 </MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="23" bw="1" op_0_bw="7">
+<![CDATA[
+:15  %dm_detMap_module_load = load i1* %dm_detMap_module_addr, align 1
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_module_load"/></StgValue>
+</operation>
+
+<operation id="22" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="24" bw="16" op_0_bw="1">
+<![CDATA[
+:16  %dm_detMap_module_load_cast = zext i1 %dm_detMap_module_load to i16
+
+]]></node>
+<StgValue><ssdm name="dm_detMap_module_load_cast"/></StgValue>
+</operation>
+
+<operation id="23" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="25" bw="0" op_0_bw="0" op_1_bw="16" op_2_bw="16">
+<![CDATA[
+:17  call void @_ssdm_op_Write.ap_auto.i16P(i16* %agg_result_module, i16 %dm_detMap_module_load_cast)
+
+]]></node>
+<StgValue><ssdm name=""/></StgValue>
+</operation>
+
+<operation id="24" st_id="2" stage="1" lat="1">
+<core>NULL</core>
+<MemPortIdVec></MemPortIdVec>
+<condition id="1">
+<or_exp><and_exp></and_exp></or_exp>
+</condition>
+
+<node id="26" bw="0">
+<![CDATA[
+:18  ret void
+
+]]></node>
+<StgValue><ssdm name=""/></StgValue>
+</operation>
+</state>
+</state_list>
+
+
+<ports>
+<port id="26" name="agg_result_x" dir="1" iftype="0">
+<core>NULL</core><StgValue><ssdm name="agg_result_x"/></StgValue>
+</port>
+<port id="27" name="agg_result_y" dir="1" iftype="0">
+<core>NULL</core><StgValue><ssdm name="agg_result_y"/></StgValue>
+</port>
+<port id="28" name="agg_result_module" dir="1" iftype="0">
+<core>NULL</core><StgValue><ssdm name="agg_result_module"/></StgValue>
+</port>
+<port id="29" name="tdc_channel" dir="0" iftype="0">
+<core>NULL</core><StgValue><ssdm name="tdc_channel"/></StgValue>
+</port>
+<port id="30" name="dm_detMap_x" dir="0" iftype="1">
+<core>ROM_nP</core><StgValue><ssdm name="dm_detMap_x"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</port>
+<port id="31" name="dm_detMap_y" dir="0" iftype="1">
+<core>ROM_nP</core><StgValue><ssdm name="dm_detMap_y"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</port>
+<port id="32" name="dm_detMap_module" dir="0" iftype="1">
+<core>ROM_nP</core><StgValue><ssdm name="dm_detMap_module"/><MemPortTyVec>1 </MemPortTyVec>
+</StgValue>
+</port>
+</ports>
+
+
+<dataflows>
+<dataflow id="34" from="_ssdm_op_Read.ap_auto.i16" to="tdc_channel_read" fromId="33" toId="3">
+</dataflow>
+<dataflow id="35" from="tdc_channel" to="tdc_channel_read" fromId="29" toId="3">
+</dataflow>
+<dataflow id="36" from="tdc_channel_read" to="tmp" fromId="3" toId="4">
+</dataflow>
+<dataflow id="37" from="dm_detMap_x" to="dm_detMap_x_addr" fromId="30" toId="5">
+</dataflow>
+<dataflow id="39" from="stg_38" to="dm_detMap_x_addr" fromId="38" toId="5">
+</dataflow>
+<dataflow id="40" from="tmp" to="dm_detMap_x_addr" fromId="4" toId="5">
+</dataflow>
+<dataflow id="41" from="dm_detMap_x_addr" to="dm_detMap_x_load" fromId="5" toId="6">
+</dataflow>
+<dataflow id="42" from="dm_detMap_y" to="dm_detMap_y_addr" fromId="31" toId="7">
+</dataflow>
+<dataflow id="43" from="stg_38" to="dm_detMap_y_addr" fromId="38" toId="7">
+</dataflow>
+<dataflow id="44" from="tmp" to="dm_detMap_y_addr" fromId="4" toId="7">
+</dataflow>
+<dataflow id="45" from="dm_detMap_y_addr" to="dm_detMap_y_load" fromId="7" toId="8">
+</dataflow>
+<dataflow id="46" from="dm_detMap_module" to="dm_detMap_module_addr" fromId="32" toId="9">
+</dataflow>
+<dataflow id="47" from="stg_38" to="dm_detMap_module_addr" fromId="38" toId="9">
+</dataflow>
+<dataflow id="48" from="tmp" to="dm_detMap_module_addr" fromId="4" toId="9">
+</dataflow>
+<dataflow id="49" from="dm_detMap_module_addr" to="dm_detMap_module_load" fromId="9" toId="10">
+</dataflow>
+<dataflow id="51" from="_ssdm_op_SpecBitsMap" to="stg_11" fromId="50" toId="11">
+</dataflow>
+<dataflow id="52" from="agg_result_x" to="stg_11" fromId="26" toId="11">
+</dataflow>
+<dataflow id="53" from="_ssdm_op_SpecBitsMap" to="stg_12" fromId="50" toId="12">
+</dataflow>
+<dataflow id="54" from="agg_result_y" to="stg_12" fromId="27" toId="12">
+</dataflow>
+<dataflow id="55" from="_ssdm_op_SpecBitsMap" to="stg_13" fromId="50" toId="13">
+</dataflow>
+<dataflow id="56" from="agg_result_module" to="stg_13" fromId="28" toId="13">
+</dataflow>
+<dataflow id="57" from="_ssdm_op_SpecBitsMap" to="stg_14" fromId="50" toId="14">
+</dataflow>
+<dataflow id="58" from="tdc_channel" to="stg_14" fromId="29" toId="14">
+</dataflow>
+<dataflow id="60" from="_ssdm_op_SpecTopModule" to="stg_15" fromId="59" toId="15">
+</dataflow>
+<dataflow id="62" from="GetLocation_str" to="stg_15" fromId="61" toId="15">
+</dataflow>
+<dataflow id="63" from="dm_detMap_x_addr" to="dm_detMap_x_load" fromId="5" toId="16">
+</dataflow>
+<dataflow id="64" from="dm_detMap_x_load" to="dm_detMap_x_load_cast" fromId="16" toId="17">
+</dataflow>
+<dataflow id="66" from="_ssdm_op_Write.ap_auto.i16P" to="stg_18" fromId="65" toId="18">
+</dataflow>
+<dataflow id="67" from="agg_result_x" to="stg_18" fromId="26" toId="18">
+</dataflow>
+<dataflow id="68" from="dm_detMap_x_load_cast" to="stg_18" fromId="17" toId="18">
+</dataflow>
+<dataflow id="69" from="dm_detMap_y_addr" to="dm_detMap_y_load" fromId="7" toId="19">
+</dataflow>
+<dataflow id="71" from="_ssdm_op_Write.ap_auto.floatP" to="stg_20" fromId="70" toId="20">
+</dataflow>
+<dataflow id="72" from="agg_result_y" to="stg_20" fromId="27" toId="20">
+</dataflow>
+<dataflow id="73" from="dm_detMap_y_load" to="stg_20" fromId="19" toId="20">
+</dataflow>
+<dataflow id="74" from="dm_detMap_module_addr" to="dm_detMap_module_load" fromId="9" toId="21">
+</dataflow>
+<dataflow id="75" from="dm_detMap_module_load" to="dm_detMap_module_load_cast" fromId="21" toId="22">
+</dataflow>
+<dataflow id="76" from="_ssdm_op_Write.ap_auto.i16P" to="stg_23" fromId="65" toId="23">
+</dataflow>
+<dataflow id="77" from="agg_result_module" to="stg_23" fromId="28" toId="23">
+</dataflow>
+<dataflow id="78" from="dm_detMap_module_load_cast" to="stg_23" fromId="22" toId="23">
+</dataflow>
+</dataflows>
+
+
+</stg>

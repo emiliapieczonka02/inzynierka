@@ -1,0 +1,85 @@
+/*
+
+Vivado v2016.2 (64-bit)
+SW Build 1577090 on Thu Jun  2 16:32:40 MDT 2016
+Process ID: 6352
+
+Current time: 	9/21/16 8:04:40 AM CEST
+Time zone: 	Central European Time (Europe/Belgrade)
+
+OS: Windows 7
+Version: 6.1
+Architecture: amd64
+Available processors (cores): 8
+
+Screen size: 1920x1080
+Screen resolution (DPI): 120
+Available screens: 1
+Default font: family=Tahoma,name=Tahoma,style=plain,size=13
+
+Java version: 	1.8.0_66 64-bit
+Java home: 	C:/Xilinx/Vivado/2016.2/tps/win64/jre
+
+User name: 	Emilia
+User home directory: C:/Users/Emilia
+User working directory: C:/Users/Emilia/Desktop/majne/inz/inzynierskie
+User country: 	PL
+User language: 	pl
+User locale: 	pl_PL
+
+RDI Base root directory: C:/Xilinx/Vivado
+RDI Data directory: C:/Xilinx/Vivado/2016.2/data
+RDI Bin directory: C:/Xilinx/Vivado/2016.2/bin
+
+Vivado preferences path: C:/Users/Emilia/AppData/Roaming/Xilinx/Vivado/2016.2/vivado.ini
+Vivado layouts directory: C:/Users/Emilia/AppData/Roaming/Xilinx/Vivado/2016.2/layouts
+
+GUI allocated memory:	214 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 422 MB
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// bL:g (cv:JFrame):  Open Project : addNotify
+// Opening Vivado Project: C:\Users\Emilia\Desktop\majne\inz\inzynierskie\inzynierskie.xpr. Version: Vivado v2016.2 
+// [GUI Memory]: 37 MB (+36179kb) [00:00:15]
+// [Engine Memory]: 405 MB (+272730kb) [00:00:15]
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// Tcl Message: open_project C:/Users/Emilia/Desktop/majne/inz/inzynierskie/inzynierskie.xpr 
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project C:/Users/Emilia/Desktop/majne/inz/inzynierskie/inzynierskie.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// HMemoryUtils.trashcanNow. Engine heap size: 427 MB. GUI used memory: 30 MB. Current time: 9/21/16 8:04:43 AM CEST
+// [Engine Memory]: 427 MB (+1864kb) [00:00:20]
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2016.2/data/ip'. 
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 46 MB (+7349kb) [00:00:29]
+// [Engine Memory]: 472 MB (+25601kb) [00:00:29]
+// [GUI Memory]: 54 MB (+6669kb) [00:00:32]
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 480 MB. GUI used memory: 35 MB. Current time: 9/21/16 8:04:59 AM CEST
+// TclEventType: FILE_SET_OPTIONS_CHANGE
+// Project name: inzynierskie; location: C:/Users/Emilia/Desktop/majne/inz/inzynierskie; part: xc7z020clg484-1
+// Tcl Message: open_project: Time (s): cpu = 00:00:43 ; elapsed = 00:00:28 . Memory (MB): peak = 757.676 ; gain = 86.953 
+dismissDialog("Open Project"); // bL:g (cv:JFrame)
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+closeMainWindow("inzynierskie - [C:/Users/Emilia/Desktop/majne/inz/inzynierskie/inzynierskie.xpr] - Vivado 2016.2"); // cv:JFrame
+// TclEventType: DG_UPDATE_GRAPH
+// HOptionPane Warning: 'A background task is running. Please wait until it completes to exit vivado.<br>If you choose to abort background task and exit immediately, you will lose<br>all unsaved changes to project. (Background Task)'
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_UPDATE_GRAPH
